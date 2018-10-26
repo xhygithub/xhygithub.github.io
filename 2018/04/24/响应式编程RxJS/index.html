@@ -1,0 +1,432 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+
+  
+  <title>响应式编程-Observable详细解析 | 倾听知识的声音</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="description" content="RxJSRxJS 是响应式编程的库，通过使用observables，方便的构造出异步的或是基于事件的程序RXJS是基于观察者模式和迭代器模式以函数式编程的思维实现的，先提前了解一下什么是响应式编程、观察者模式、迭代器模式？   响应式编程响应式编程就是异步数据流交互的编程范式。 事件总线（event buses）或一些典型的点击事件本质上是一个异步的事件流，这样你可以观察他的变化并且做出一些反应">
+<meta name="keywords" content="响应式,模式">
+<meta property="og:type" content="article">
+<meta property="og:title" content="响应式编程-Observable详细解析">
+<meta property="og:url" content="http://yoursite.com/2018/04/24/响应式编程RxJS/index.html">
+<meta property="og:site_name" content="倾听知识的声音">
+<meta property="og:description" content="RxJSRxJS 是响应式编程的库，通过使用observables，方便的构造出异步的或是基于事件的程序RXJS是基于观察者模式和迭代器模式以函数式编程的思维实现的，先提前了解一下什么是响应式编程、观察者模式、迭代器模式？   响应式编程响应式编程就是异步数据流交互的编程范式。 事件总线（event buses）或一些典型的点击事件本质上是一个异步的事件流，这样你可以观察他的变化并且做出一些反应">
+<meta property="og:locale" content="Chinese and English">
+<meta property="og:image" content="http://yoursite.com/2018/04/24/响应式编程RxJS/RxJS1.png">
+<meta property="og:image" content="http://yoursite.com/2018/04/24/响应式编程RxJS/RxJS2.png">
+<meta property="og:updated_time" content="2018-10-26T08:56:45.714Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="响应式编程-Observable详细解析">
+<meta name="twitter:description" content="RxJSRxJS 是响应式编程的库，通过使用observables，方便的构造出异步的或是基于事件的程序RXJS是基于观察者模式和迭代器模式以函数式编程的思维实现的，先提前了解一下什么是响应式编程、观察者模式、迭代器模式？   响应式编程响应式编程就是异步数据流交互的编程范式。 事件总线（event buses）或一些典型的点击事件本质上是一个异步的事件流，这样你可以观察他的变化并且做出一些反应">
+<meta name="twitter:image" content="http://yoursite.com/2018/04/24/响应式编程RxJS/RxJS1.png">
+  
+    <link rel="alternate" href="/atom.xml" title="倾听知识的声音" type="application/atom+xml">
+  
+  
+    <link rel="icon" href="/favicon.png">
+  
+  
+    <link href="//fonts.googleapis.com/css?family=Source+Code+Pro" rel="stylesheet" type="text/css">
+  
+  <link rel="stylesheet" href="/css/style.css">
+</head>
+
+<body>
+  <div id="container">
+    <div id="wrap">
+      <header id="header">
+  <div id="banner"></div>
+  <div id="header-outer" class="outer">
+    <div id="header-title" class="inner">
+      <h1 id="logo-wrap">
+        <a href="/" id="logo">倾听知识的声音</a>
+      </h1>
+      
+    </div>
+    <div id="header-inner" class="inner">
+      <nav id="main-nav">
+        <a id="main-nav-toggle" class="nav-icon"></a>
+        
+          <a class="main-nav-link" href="/">Home</a>
+        
+          <a class="main-nav-link" href="/archives">Archives</a>
+        
+      </nav>
+      <nav id="sub-nav">
+        
+          <a id="nav-rss-link" class="nav-icon" href="/atom.xml" title="RSS Feed"></a>
+        
+        <a id="nav-search-btn" class="nav-icon" title="Search"></a>
+      </nav>
+      <div id="search-form-wrap">
+        <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" class="search-form-input" placeholder="Search"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="http://yoursite.com"></form>
+      </div>
+    </div>
+  </div>
+</header>
+      <div class="outer">
+        <section id="main"><article id="post-响应式编程RxJS" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2018/04/24/响应式编程RxJS/" class="article-date">
+  <time datetime="2018-04-24T02:23:34.000Z" itemprop="datePublished">2018-04-24</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      响应式编程-Observable详细解析
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h2 id="RxJS"><a href="#RxJS" class="headerlink" title="RxJS"></a>RxJS</h2><p>RxJS 是响应式编程的库，通过使用observables，方便的构造出异步的或是基于事件的程序<br>RXJS是基于观察者模式和迭代器模式以函数式编程的思维实现的，先提前了解一下什么是响应式编程、观察者模式、迭代器模式？</p>
+
+
+<h2 id="响应式编程"><a href="#响应式编程" class="headerlink" title="响应式编程"></a>响应式编程</h2><p>响应式编程就是异步数据流交互的编程范式。 事件总线（event buses）或一些典型的点击事件本质上是一个异步的事件流，这样你可以观察他的变化并且做出一些反应。<br>除了典型的鼠标事件（点击、悬停等），你可以给任何事物创建数据流，任何东西也可以成为数据流，例如变量、用户输入、缓存等等，微博订阅也可以想象成和点击事件一样的数据流，你可以监听这样的数据流，并做出相应的反应。<br><img src="/2018/04/24/响应式编程RxJS/RxJS1.png"><br>数据流是整个响应式编程体系中的核心。</p>
+<h2 id="设计模式-观察者模式-amp-amp-迭代器模式"><a href="#设计模式-观察者模式-amp-amp-迭代器模式" class="headerlink" title="设计模式-观察者模式&amp;&amp;迭代器模式"></a>设计模式-观察者模式&amp;&amp;迭代器模式</h2><h3 id="观察者模式"><a href="#观察者模式" class="headerlink" title="观察者模式"></a>观察者模式</h3><p>又叫发布订阅模式，定义一对多的关系，如果主题对象的状态发生变化就会自动通知所有订阅者，让他们自己做更新；如果观察者取消订阅，那么将不会收到任何主题的通知消息<br><img src="/2018/04/24/响应式编程RxJS/RxJS2.png"><br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br></pre></td><td class="code"><pre><span class="line">//subject类定义（被观察者）</span><br><span class="line">class Subject &#123;</span><br><span class="line">  constructor() &#123;</span><br><span class="line">    this.observerCollection = []</span><br><span class="line">  &#125;</span><br><span class="line">  </span><br><span class="line">  registerObserver(observer) &#123;//观察者订阅消息</span><br><span class="line">    this.observerCollection.push(observer)</span><br><span class="line">  &#125;</span><br><span class="line">  </span><br><span class="line">  unregisterObserver(observer) &#123;//观察者取消订阅</span><br><span class="line">    int index = this.oberverCollection.indexOf(observer);</span><br><span class="line">    if(index &gt;= 0) this.observerCollection.splice(index, 1);</span><br><span class="line">  &#125;</span><br><span class="line">  </span><br><span class="line">  notifyObservers() &#123;//当状态发生变化时，通知所有的订阅者</span><br><span class="line">    this.observerCollection.forEach(observer =&gt; observer.notify())</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">//观察者</span><br><span class="line">class Observer &#123;</span><br><span class="line">  constrcutor(name) &#123;</span><br><span class="line">    this.name = name</span><br><span class="line">  &#125;</span><br><span class="line">  </span><br><span class="line">  notify () &#123;</span><br><span class="line">    console.log(`$&#123;this.name&#125; has been notified`)</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line">//使用案例</span><br><span class="line"></span><br><span class="line">let subject = new Subject();</span><br><span class="line">let observerA = new Observer(&quot;observer A&quot;);</span><br><span class="line">let observerB = new Observer(&quot;observer B&quot;);</span><br><span class="line"></span><br><span class="line">subject.registerObserver(observerA)//注册观察者A</span><br><span class="line">subject.registerObserver(observerB)//注册观察者B</span><br><span class="line"></span><br><span class="line">subject.notifyObservers();//发布消息给所有的观察者</span><br><span class="line">subject.unregisterObserver(observerA);//移除观察者A</span><br></pre></td></tr></table></figure></p>
+<p>模式的优点：</p>
+<ul>
+<li>支持简单的广播通信，自动通知所有订阅者</li>
+<li>主题与观察者之间的关系可以单独拓展以及重用</li>
+</ul>
+<p>劣势：</p>
+<ul>
+<li>由于是一对多的关系，如果订阅者过多，通知所有订阅者将会花费很长时间</li>
+<li>主题和观察之间如果有循环依赖，那么会触发循环调用，可能导致系统崩溃。</li>
+</ul>
+<p>常见的观察者模式的例子就是给DOM对象添加监听事件：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">&lt;button id=&apos;button&apos;&gt;OK&lt;/button&gt;</span><br><span class="line">function clickHandle(event) &#123;</span><br><span class="line">  console.log(&apos;用户点击确认按钮&apos;)</span><br><span class="line">&#125;</span><br><span class="line">document.getElementById(&apos;#button&apos;).addEventListener(&apos;click&apos;, clickHandle);</span><br></pre></td></tr></table></figure>
+<p>通过addEventListener监听button对象的click事件。当用户点击按钮时，会自动执行clickHandle</p>
+<h3 id="迭代器模式"><a href="#迭代器模式" class="headerlink" title="迭代器模式"></a>迭代器模式</h3><p>它提供一种方法能够顺序访问一个聚合对象中各个元素，又不需要暴露该对象的内部表示。Javascript中像Array，Set等都属于内置的可迭代类型。可以通过iterator方法来获取一个迭代对象。调用迭代对象的next方法获取一个元素对象(包含两个属性value、 done)。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><span class="line">var iterable = [1, 2]</span><br><span class="line">var iterator = iterable[Symbol.iterator]();</span><br><span class="line">iterator.next(); //&#123;value: 1, done: false&#125;</span><br><span class="line">iterator.next(); //&#123;value: 2, done: false&#125;</span><br><span class="line">iterator.next(); //&#123;value: undefined, done: true&#125; //value是返回值，done为true表示已经到达最后</span><br><span class="line"></span><br><span class="line">//遍历迭代器</span><br><span class="line">var iterable = [1, 2]</span><br><span class="line">var iterator = iterable[Symbol.iterator]();//ES6可以通过Symbol.iterator来创建可迭代对象的内部迭代器</span><br><span class="line"></span><br><span class="line">while(true) &#123;</span><br><span class="line">  let result;</span><br><span class="line">  try &#123;</span><br><span class="line">    result = iterator.next(); //获取下一个元素</span><br><span class="line">  &#125; catch (error) &#123;</span><br><span class="line">    handleError(error)//错误处理</span><br><span class="line">  &#125;</span><br><span class="line">  </span><br><span class="line">  if(result.done) &#123;</span><br><span class="line">    handleCompleted(); //已完成</span><br><span class="line">    break;</span><br><span class="line">  &#125;</span><br><span class="line">  doSth(result.value);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>对应三种情况：获取下一个值、已完成（无更多值）、错误处理</p>
+<h2 id="RxJS-观察者-迭代器"><a href="#RxJS-观察者-迭代器" class="headerlink" title="RxJS = 观察者+迭代器"></a>RxJS = 观察者+迭代器</h2><p>RxJS是基于观察者模式和迭代器模式以函数式编程的思维实现的。<br>RxJS中含有两个基本的概念：Observables（被观察者，是一个值或者事件流的集合）、Observer（观察者）</p>
+<p>订阅： Observer通过Observable提供的subscribe()方法订阅Observable</p>
+<p>发布： Observable通过回调Observer next()方法向Observer发布消息</p>
+<h3 id="Observable："><a href="#Observable：" class="headerlink" title="Observable："></a>Observable：</h3><ul>
+<li>Creating Observables<ul>
+<li>可以使用Rx.Observable.create或者是Create Operate(下文介绍)来创建</li>
+</ul>
+</li>
+<li>Subscribing to Observables<ul>
+<li>订阅Observable，接受一个Observer对象（这个对象包含next、error、completed方法）作为参数</li>
+</ul>
+</li>
+<li>Execution Observable<ul>
+<li>The code inside <b>Observable.create(function subscribe(observer) {…}) </b>represents an “Observable execution”</li>
+<li>执行发布next/error/complete消息通知给Observer</li>
+</ul>
+</li>
+<li>Disposing Observable Executions<ul>
+<li>返回一个unsubscribe函数，用于取消订阅（Observable Executions可能是无穷的，Observer想要终止执行，就需要取消订阅）</li>
+</ul>
+</li>
+</ul>
+<h3 id="Observer："><a href="#Observer：" class="headerlink" title="Observer："></a>Observer：</h3><p>RxJS中，Observer是一个包含3个方法的对象, 它消费Observable发布的数据。当Observable触发事件时，便会自动调用观察者的对应的方法:</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">var Observer = &#123;</span><br><span class="line">  next(value) &#123;  //处理值，每当Observable发送新值的时候，next方法会被调用  &#125;</span><br><span class="line">  error(err) &#123;  //处理异常 ，当 Observable 内发生错误时，error 方法就会被调用   &#125;</span><br><span class="line">  completed() &#123;//处理已经完成状态， 当 Observable 数据终止后，complete 方法会被调用。在调用 complete 方法之后，next 方法就不会再次被调用&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>Observer也可以只包含部分回调函数，如果Observer不包含某些函数，Observable仍然会正常执行，只不过这个通知会被忽略，因为Observer没有对应的回调。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br></pre></td><td class="code"><pre><span class="line">var observable = Rx.Observable</span><br><span class="line">    .create(function(observer) &#123;</span><br><span class="line">            observer.next(&apos;Semlinker&apos;);</span><br><span class="line">            observer.next(&apos;Lolo&apos;);</span><br><span class="line">            observer.complete();</span><br><span class="line">            observer.next(&apos;not work&apos;);</span><br><span class="line">    &#125;);</span><br><span class="line">    </span><br><span class="line">// 创建一个观察者</span><br><span class="line">var observer = &#123;</span><br><span class="line">    next: function(value) &#123;</span><br><span class="line">        console.log(value);</span><br><span class="line">    &#125;,</span><br><span class="line">    error: function(error) &#123;</span><br><span class="line">        console.log(error);</span><br><span class="line">    &#125;,</span><br><span class="line">    complete: function() &#123;</span><br><span class="line">        console.log(&apos;complete&apos;);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line">// 订阅已创建的observable对象</span><br><span class="line">observable.subscribe(observer);</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">//控制台输出</span><br><span class="line">Semlinker</span><br><span class="line">Lolo</span><br><span class="line">complete</span><br></pre></td></tr></table></figure>
+<ul>
+<li>complete方法执行后，next会失效。</li>
+<li>另外观察者可以只包含一个next方法；</li>
+<li>当Observable是一个无限序列的时候，例如click，这种场景下，complete方法永远不会被调用。</li>
+</ul>
+<h3 id="Subscription"><a href="#Subscription" class="headerlink" title="Subscription"></a>Subscription</h3><p>什么是subscription？它是一个对象，一种随时可以丢弃的资源，有一个unsubscrible方法</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">var observable = Rx.Observable.interval(1000);</span><br><span class="line">var subscription = observable.subscribe(x =&gt; console.log(x));</span><br><span class="line">// Later:</span><br><span class="line">// This cancels the ongoing Observable execution which</span><br><span class="line">// was started by calling subscribe with an Observer.</span><br><span class="line">subscription.unsubscribe();</span><br></pre></td></tr></table></figure>
+<h3 id="Subject"><a href="#Subject" class="headerlink" title="Subject"></a>Subject</h3><p>什么是subject？ rxjs subject是一种特殊类型的Observable，能够将值多路广播给多个Observers。普通的Observable是单路广播</p>
+<ul>
+<li><p>多播（make multiple Observers see the same Observable execution）</p>
+</li>
+<li><p>单播（each Observer拥有独立的属于自己Observable execution）</p>
+</li>
+</ul>
+<p>每个Subject是一个Observable</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">var subject = new Rx.Subject();</span><br><span class="line"></span><br><span class="line">subject.subscribe(&#123;</span><br><span class="line">  next: (v) =&gt; console.log(&apos;observerA: &apos; + v)</span><br><span class="line">&#125;);</span><br><span class="line">subject.subscribe(&#123;</span><br><span class="line">  next: (v) =&gt; console.log(&apos;observerB: &apos; + v)</span><br><span class="line">&#125;);</span><br><span class="line"></span><br><span class="line">subject.next(1);//对于subject来说，它发布值的时候并不会invoke a new execution，shared execution</span><br><span class="line">subject.next(2);</span><br></pre></td></tr></table></figure>
+<p>从Observer的视角来看，它并不清楚Observable execution是来源于多路广播还是单路广播。</p>
+<p>一个Subject也是一个Observer：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">var subject = new Rx.Subject();</span><br><span class="line"></span><br><span class="line">subject.subscribe(&#123;</span><br><span class="line">  next: (v) =&gt; console.log(&apos;observerA: &apos; + v)</span><br><span class="line">&#125;);</span><br><span class="line">subject.subscribe(&#123;</span><br><span class="line">  next: (v) =&gt; console.log(&apos;observerB: &apos; + v)</span><br><span class="line">&#125;);</span><br><span class="line"></span><br><span class="line">var observable = Rx.Observable.from([1, 2, 3]);</span><br><span class="line"></span><br><span class="line">observable.subscribe(subject);</span><br></pre></td></tr></table></figure>
+<p>Subject将单路传播的Observable execution变为多路传播，也是唯一的方式</p>
+<h2 id="RxJS-Operators操作"><a href="#RxJS-Operators操作" class="headerlink" title="RxJS Operators操作"></a>RxJS Operators操作</h2><p>Operator也是一个函数，它接受一个Observable对象，返回一个新的Observable对象。<br>Observable支持operator链式结构</p>
+<p>Observable - Create Operator<br>常用的操作符，用来创建Observable对象： create、of、from、fromEvent、fromPromise、empty、never、throw、interval、timer</p>
+<p>value producing operator</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line">var source = Rx.Observable.of(&apos;Semlinker&apos;, &apos;Lolo&apos;);</span><br><span class="line"></span><br><span class="line">source.subscribe(&#123;</span><br><span class="line">    next: function(value) &#123;</span><br><span class="line">        console.log(value);</span><br><span class="line">    &#125;,</span><br><span class="line">    complete: function() &#123;</span><br><span class="line">        console.log(&apos;complete!&apos;);</span><br><span class="line">    &#125;,</span><br><span class="line">    error: function(error) &#123;</span><br><span class="line">        console.log(error);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;);</span><br><span class="line">//控制台输出结果：</span><br><span class="line">Semlinker</span><br><span class="line">Lolo</span><br><span class="line">complete</span><br></pre></td></tr></table></figure>
+<p>Observable是延迟计算、push体系的多值集合。</p>
+<h2 id="Push-amp-amp-Pull"><a href="#Push-amp-amp-Pull" class="headerlink" title="Push &amp;&amp; Pull"></a>Push &amp;&amp; Pull</h2><p>push和pull是数据生产者和消费者两种不同的交流方式</p>
+<h3 id="什么是”pull”？"><a href="#什么是”pull”？" class="headerlink" title="什么是”pull”？"></a>什么是”pull”？</h3><p>“拉”的体系中，消费者决定何时从生产者那里获取数据，生产者本身并不知道什么时候数据会被发送给消费者<br>每一个Javascript函数都是一个拉的体系，函数是生产者，调用函数的则是消费者，它消费函数的返回值数据</p>
+<h3 id="什么是”push”？"><a href="#什么是”push”？" class="headerlink" title="什么是”push”？"></a>什么是”push”？</h3><p>在”推”的体系中，生产者决定何时发送数据给消费者，消费者在接收数据之前并不知道它将要接收数据<br>Promise 是JS中常见的”推”体系，一个Promise（生产者）发送一个resolve value（成功状态的值）来执行回调函数（消费者）。Promise决定着何时才推送数据到回调函数<br>RxJs引入的Observable（被观察者），是”推”的体系。Observable是一个产生多值的生产者，当产生新数据时，会主动推送给消费者（Observer）。</p>
+<table>
+<thead>
+<tr>
+<th style="text-align:center">类型</th>
+<th style="text-align:center">生产者</th>
+<th style="text-align:center">消费者</th>
+<th style="text-align:center">例子</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:center">pull</td>
+<td style="text-align:center">收到请求的时候再产生数据</td>
+<td style="text-align:center">决定何时请求数据</td>
+<td style="text-align:center">JS Function</td>
+</tr>
+<tr>
+<td style="text-align:center">push</td>
+<td style="text-align:center">按自己需求主动产生数据</td>
+<td style="text-align:center">对接收的数据进行处理</td>
+<td style="text-align:center">Promise/Observable</td>
+</tr>
+</tbody>
+</table>
+<h2 id="Single-amp-amp-Multiple"><a href="#Single-amp-amp-Multiple" class="headerlink" title="Single &amp;&amp; Multiple"></a>Single &amp;&amp; Multiple</h2><p>单值和多值是Observable和Function的不同之一。<br>随着时间的推移，Observables 能够发布多个值，但是函数并不能</p>
+<table>
+<thead>
+<tr>
+<th style="text-align:center">类型</th>
+<th style="text-align:center">描述</th>
+<th style="text-align:center">消费者 </th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:center">single</td>
+<td style="text-align:center">只能发布一个值</td>
+<td style="text-align:center">JS Function/Promise</td>
+</tr>
+<tr>
+<td style="text-align:center">multiple</td>
+<td style="text-align:center">能够发布多个值</td>
+<td style="text-align:center">Observable/Iterator </td>
+</tr>
+</tbody>
+</table>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">function foo() &#123;</span><br><span class="line">  return 1;</span><br><span class="line">  return 2; //will never happen</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>Function只能返回一个值，但是Observables：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line">var foo = Rx.Observable.create(function (observer) &#123;</span><br><span class="line">  console.log(&apos;Hello&apos;);</span><br><span class="line">  observer.next(42);</span><br><span class="line">  observer.next(100); // &quot;return&quot; another value</span><br><span class="line">  observer.next(200); // &quot;return&quot; yet another</span><br><span class="line">&#125;);</span><br><span class="line"></span><br><span class="line">console.log(&apos;before&apos;);</span><br><span class="line">foo.subscribe(function (x) &#123;</span><br><span class="line">  console.log(x);</span><br><span class="line">&#125;);</span><br><span class="line">console.log(&apos;after&apos;);</span><br><span class="line">//output</span><br><span class="line">&quot;before&quot;</span><br><span class="line">&quot;Hello&quot;</span><br><span class="line">42</span><br><span class="line">100</span><br><span class="line">200</span><br><span class="line">&quot;after&quot;</span><br></pre></td></tr></table></figure>
+<p>Observables 能够同步的发布多个值。</p>
+<h2 id="延迟计算-amp-渐进式取值"><a href="#延迟计算-amp-渐进式取值" class="headerlink" title="延迟计算 &amp; 渐进式取值"></a>延迟计算 &amp; 渐进式取值</h2><h3 id="延迟计算"><a href="#延迟计算" class="headerlink" title="延迟计算"></a>延迟计算</h3><p>所有的Observable对象只有等到订阅后才会执行，如果没有订阅就不会执行</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">var source = RX.observable.from([1,2,3,4]);</span><br><span class="line">var result = source.map(x =&gt; x + 1);</span><br></pre></td></tr></table></figure>
+<p>result 对象未被订阅，所以不会执行</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">function foo() &#123;</span><br><span class="line">  console.log(&apos;hello&apos;)</span><br><span class="line">&#125;</span><br><span class="line">var x = foo(); //=&gt; output: hello</span><br></pre></td></tr></table></figure>
+<p>如果不调用函数foo，那么console.log并不会执行。<br>Function和Observable都是延迟计算。订阅Observable就如同调用Function一样。</p>
+<h3 id="渐进式取值"><a href="#渐进式取值" class="headerlink" title="渐进式取值"></a>渐进式取值</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">var source = [1, 2, 3, 4];</span><br><span class="line">var example = source</span><br><span class="line">                .filter(x =&gt; x % 2 == 0)//[2, 4]</span><br><span class="line">                .map(x =&gt; x + 1)// [3, 5]</span><br></pre></td></tr></table></figure>
+<p>数组操作符filter、map完整执行之后才会返回一个新的数组、进行下一步计算（先对整个数组进行filter，得到完整结果之后才会进行map）</p>
+<p>虽然Observable运算符每次会返回一个新的Observable对象，但是每个元素都是渐进式获取的，且每个元素都会经过操作符链的运算后才会输出，不会像数组那样，每个阶段都得到完整的运算。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">var source = Rx.Observable.from([1,2,3,4,5]);</span><br><span class="line">var example = source</span><br><span class="line">              .filter(x =&gt; x % 2 === 0)</span><br><span class="line">              .map(x =&gt; x + 1)</span><br><span class="line"></span><br><span class="line">example.subscribe(console.log);</span><br></pre></td></tr></table></figure>
+<ul>
+<li>source发出1，执行filter被过滤掉</li>
+<li>source发出2，执行filter， 执行map处理成3，执行console</li>
+<li>source发出3， 执行filter过滤掉</li>
+<li>source发出4，执行filter，执行map被处理成5，执行console</li>
+<li>source发出5， 执行filter过滤掉</li>
+</ul>
+<h3 id="Observable-vs-Promise"><a href="#Observable-vs-Promise" class="headerlink" title="Observable vs Promise"></a>Observable vs Promise</h3><table>
+<thead>
+<tr>
+<th style="text-align:center">类型</th>
+<th style="text-align:center">Single（单值）</th>
+<th style="text-align:center">Multiple（多值）</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:center">pull</td>
+<td style="text-align:center">Function（函数）</td>
+<td style="text-align:center">Iterator（遍历器）</td>
+</tr>
+<tr>
+<td style="text-align:center">push</td>
+<td style="text-align:center">Promise</td>
+<td style="text-align:center">Observable</td>
+</tr>
+</tbody>
+</table>
+<table>
+<thead>
+<tr>
+<th style="text-align:left">类型</th>
+<th style="text-align:left">比较</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left">Function</td>
+<td style="text-align:left">延迟计算，当被调用的时候同步返回一个单值</td>
+</tr>
+<tr>
+<td style="text-align:left">Iterator</td>
+<td style="text-align:left">延迟计算，同步返回零个或是无限多个值</td>
+</tr>
+<tr>
+<td style="text-align:left">Promise</td>
+<td style="text-align:left">可能返回单个值或是不返回值</td>
+</tr>
+<tr>
+<td style="text-align:left">Observable</td>
+<td style="text-align:left">延迟计算，从被调用开始同步或是异步的返回零个到无限多的值</td>
+</tr>
+</tbody>
+</table>
+<ul>
+<li>Promise<ul>
+<li>返回单个值</li>
+<li>不可取消的</li>
+</ul>
+</li>
+<li>Observable<ul>
+<li>可以随时间的推移发出多个值</li>
+<li>可以取消的（取消订阅）</li>
+<li>支持operator，例如map、filter、reduce等</li>
+<li>延迟执行，只有当订阅是才会执行</li>
+</ul>
+</li>
+</ul>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://yoursite.com/2018/04/24/响应式编程RxJS/" data-id="cjnpsydda000xbmkj1hieh700" class="article-share-link">Share</a>
+      
+      
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/响应式/">响应式</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/模式/">模式</a></li></ul>
+
+    </footer>
+  </div>
+  
+    
+<nav id="article-nav">
+  
+    <a href="/2018/05/10/JS-闭包/" id="article-nav-newer" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Newer</strong>
+      <div class="article-nav-title">
+        
+          JS 闭包
+        
+      </div>
+    </a>
+  
+  
+    <a href="/2018/04/16/Test-Driven-Development/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Older</strong>
+      <div class="article-nav-title">Test Driven Development</div>
+    </a>
+  
+</nav>
+
+  
+</article>
+
+</section>
+        
+          <aside id="sidebar">
+  
+    
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Tags</h3>
+    <div class="widget">
+      <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/Mock/">Mock</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/TDD/">TDD</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/inception/">inception</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/可视化/">可视化</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/响应式/">响应式</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/敏捷/">敏捷</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/敏捷实践/">敏捷实践</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/框架/">框架</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/模式/">模式</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Tag Cloud</h3>
+    <div class="widget tagcloud">
+      <a href="/tags/Mock/" style="font-size: 10px;">Mock</a> <a href="/tags/TDD/" style="font-size: 10px;">TDD</a> <a href="/tags/inception/" style="font-size: 10px;">inception</a> <a href="/tags/可视化/" style="font-size: 10px;">可视化</a> <a href="/tags/响应式/" style="font-size: 10px;">响应式</a> <a href="/tags/敏捷/" style="font-size: 10px;">敏捷</a> <a href="/tags/敏捷实践/" style="font-size: 10px;">敏捷实践</a> <a href="/tags/框架/" style="font-size: 10px;">框架</a> <a href="/tags/模式/" style="font-size: 10px;">模式</a>
+    </div>
+  </div>
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Archives</h3>
+    <div class="widget">
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/10/">October 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/09/">September 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/08/">August 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/07/">July 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/05/">May 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/04/">April 2018</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Recent Posts</h3>
+    <div class="widget">
+      <ul>
+        
+          <li>
+            <a href="/2018/10/26/领导力培训/">领导力培训</a>
+          </li>
+        
+          <li>
+            <a href="/2018/09/13/security-knowledge/">security knowledge</a>
+          </li>
+        
+          <li>
+            <a href="/2018/08/08/商业模式/">商业模式 </a>
+          </li>
+        
+          <li>
+            <a href="/2018/08/07/shell-script/">shell script</a>
+          </li>
+        
+          <li>
+            <a href="/2018/08/07/css-new-properties-introduction/">css new properties introduction</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+
+  
+</aside>
+        
+      </div>
+      <footer id="footer">
+  
+  <div class="outer">
+    <div id="footer-info" class="inner">
+      &copy; 2018 Haiyan<br>
+      Powered by <a href="http://hexo.io/" target="_blank">Hexo</a>
+    </div>
+  </div>
+</footer>
+    </div>
+    <nav id="mobile-nav">
+  
+    <a href="/" class="mobile-nav-link">Home</a>
+  
+    <a href="/archives" class="mobile-nav-link">Archives</a>
+  
+</nav>
+    
+
+<script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
+
+
+  <link rel="stylesheet" href="/fancybox/jquery.fancybox.css">
+  <script src="/fancybox/jquery.fancybox.pack.js"></script>
+
+
+<script src="/js/script.js"></script>
+
+
+
+  </div>
+</body>
+</html>

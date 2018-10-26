@@ -1,0 +1,235 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+
+  
+  <title>不同框架Virtual DOM | 倾听知识的声音</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="description" content="在许多的人认知中virtual dom的产生是为了减少对DOM的直接操作，是一种性能和执行效率上的提升。真实的DOM包含的太多的属性参数，说到底就是用一个简单的对象（只会存储一些重要的参数）去代替一个复杂的对象。其实不只是这样（对于一些比较简单的dom结构来说，直接修改dom可能效率更高。但是庞大复杂的页面结构，效率更高），除了减少DOM操作的消耗，它在原始的JS编程上更进一步，做了一个">
+<meta property="og:type" content="article">
+<meta property="og:title" content="不同框架Virtual DOM">
+<meta property="og:url" content="http://yoursite.com/2018/07/18/不同框架Virtual-DOM/index.html">
+<meta property="og:site_name" content="倾听知识的声音">
+<meta property="og:description" content="在许多的人认知中virtual dom的产生是为了减少对DOM的直接操作，是一种性能和执行效率上的提升。真实的DOM包含的太多的属性参数，说到底就是用一个简单的对象（只会存储一些重要的参数）去代替一个复杂的对象。其实不只是这样（对于一些比较简单的dom结构来说，直接修改dom可能效率更高。但是庞大复杂的页面结构，效率更高），除了减少DOM操作的消耗，它在原始的JS编程上更进一步，做了一个">
+<meta property="og:locale" content="Chinese and English">
+<meta property="og:updated_time" content="2018-10-26T08:56:45.714Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="不同框架Virtual DOM">
+<meta name="twitter:description" content="在许多的人认知中virtual dom的产生是为了减少对DOM的直接操作，是一种性能和执行效率上的提升。真实的DOM包含的太多的属性参数，说到底就是用一个简单的对象（只会存储一些重要的参数）去代替一个复杂的对象。其实不只是这样（对于一些比较简单的dom结构来说，直接修改dom可能效率更高。但是庞大复杂的页面结构，效率更高），除了减少DOM操作的消耗，它在原始的JS编程上更进一步，做了一个">
+  
+    <link rel="alternate" href="/atom.xml" title="倾听知识的声音" type="application/atom+xml">
+  
+  
+    <link rel="icon" href="/favicon.png">
+  
+  
+    <link href="//fonts.googleapis.com/css?family=Source+Code+Pro" rel="stylesheet" type="text/css">
+  
+  <link rel="stylesheet" href="/css/style.css">
+</head>
+
+<body>
+  <div id="container">
+    <div id="wrap">
+      <header id="header">
+  <div id="banner"></div>
+  <div id="header-outer" class="outer">
+    <div id="header-title" class="inner">
+      <h1 id="logo-wrap">
+        <a href="/" id="logo">倾听知识的声音</a>
+      </h1>
+      
+    </div>
+    <div id="header-inner" class="inner">
+      <nav id="main-nav">
+        <a id="main-nav-toggle" class="nav-icon"></a>
+        
+          <a class="main-nav-link" href="/">Home</a>
+        
+          <a class="main-nav-link" href="/archives">Archives</a>
+        
+      </nav>
+      <nav id="sub-nav">
+        
+          <a id="nav-rss-link" class="nav-icon" href="/atom.xml" title="RSS Feed"></a>
+        
+        <a id="nav-search-btn" class="nav-icon" title="Search"></a>
+      </nav>
+      <div id="search-form-wrap">
+        <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" class="search-form-input" placeholder="Search"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="http://yoursite.com"></form>
+      </div>
+    </div>
+  </div>
+</header>
+      <div class="outer">
+        <section id="main"><article id="post-不同框架Virtual-DOM" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2018/07/18/不同框架Virtual-DOM/" class="article-date">
+  <time datetime="2018-07-18T01:59:16.000Z" itemprop="datePublished">2018-07-18</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      不同框架Virtual DOM
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>在许多的人认知中virtual dom的产生是为了减少对DOM的直接操作，是一种性能和执行效率上的提升。真实的DOM包含的太多的属性参数，说到底就是用一个简单的对象（只会存储一些重要的参数）去代替一个复杂的对象。其实不只是这样（对于一些比较简单的dom结构来说，直接修改dom可能效率更高。但是庞大复杂的页面结构，效率更高），除了减少DOM操作的消耗，它在原始的JS编程上更进一步，做了一个抽象（JS操作DOM的抽象）和封装，我们不用关心底层浏览器提供的DOM，而是让virtual dom去操作，这实际上是效率、通用性上的平衡。</p>
+<p>将DOM树抽象成一个js对象，映射真实DOM的JS对象，这个对象就是Virtual DOM。在项目初始化时，DOM还不存在，根据代码（JSX，template）一个新的virtual DOM会被创建并且应用到真实的DOM上，并且将这个virtual Dom保留下来。当元素状态产生变化时，new virtual dom会重新创建并且和之前保存下来的old virtual dom进行比较，将差别应用在真实的DOM上(patch)，保留new virtual dom覆盖旧的。<br>virtual Dom本质上是一个嵌套着数组的原生对象（不同框架的vnode事例结构是不一样的，以vue为例）：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br></pre></td><td class="code"><pre><span class="line">//源码文件：vue/types/vnode.d.ts</span><br><span class="line">export interface VNode &#123;</span><br><span class="line">  tag?: string; //当前节点的标签名称</span><br><span class="line">  data?: VNodeData; //当前节点的数据对象</span><br><span class="line">  children?: VNode[]; //子节点</span><br><span class="line">  text?: string; //当前节点的文本，一版文本节点或是注释节点会有该属性</span><br><span class="line">  elm?: Node; //当前虚拟节点对应的真实的dom节点</span><br><span class="line">  ns?: string;</span><br><span class="line">  context?: Vue;</span><br><span class="line">  key?: string | number;</span><br><span class="line">  componentOptions?: VNodeComponentOptions;</span><br><span class="line">  componentInstance?: Vue;</span><br><span class="line">  parent?: VNode;</span><br><span class="line">  raw?: boolean;</span><br><span class="line">  isStatic?: boolean;</span><br><span class="line">  isRootInsert: boolean;</span><br><span class="line">  isComment: boolean;</span><br><span class="line">&#125;</span><br><span class="line">export interface VNodeData &#123;</span><br><span class="line">  key?: string | number;</span><br><span class="line">  slot?: string;</span><br><span class="line">  scopedSlots?: &#123; [key: string]: ScopedSlot &#125;;</span><br><span class="line">  ref?: string;</span><br><span class="line">  tag?: string;</span><br><span class="line">  staticClass?: string;</span><br><span class="line">  class?: any;</span><br><span class="line">  staticStyle?: &#123; [key: string]: any &#125;;</span><br><span class="line">  style?: Object[] | Object;</span><br><span class="line">  props?: &#123; [key: string]: any &#125;;</span><br><span class="line">  attrs?: &#123; [key: string]: any &#125;;</span><br><span class="line">  domProps?: &#123; [key: string]: any &#125;;</span><br><span class="line">  hook?: &#123; [key: string]: Function &#125;;</span><br><span class="line">  on?: &#123; [key: string]: Function | Function[] &#125;;</span><br><span class="line">  nativeOn?: &#123; [key: string]: Function | Function[] &#125;;</span><br><span class="line">  transition?: Object;</span><br><span class="line">  show?: boolean;</span><br><span class="line">  inlineTemplate?: &#123;</span><br><span class="line">    render: Function;</span><br><span class="line">    staticRenderFns: Function[];</span><br><span class="line">  &#125;;</span><br><span class="line">  directives?: VNodeDirective[];</span><br><span class="line">  keepAlive?: boolean;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<p>React是使用JSX（js + xml）语法实现vitual dom的生成，而vue是通过template模版的方式实现的。</p>
+<h2 id="diff"><a href="#diff" class="headerlink" title="diff"></a>diff</h2><p>当比较新旧的virtual dom时，我们可以抽象成两棵树的比较。在diff的时候不考虑DOM节点的跨级移动(JS 操作DOM很少出现跨级的情况），只在同一级上进行比较。<br><!-- 图片 --><br>vue的diff位于vue/src/core/vdom/patch.js文件中，该算法来源于snabbdom，复杂度为O(n)。<br>重要的方法：<br>patch()—因为真正的patch算法是patchVnode()来实现的, patchVnode中更新子节点的算法其实是在updateChildren()函数中实现的</p>
+<p>然后将差异反应到DOM树上（也就是patch），特别要提一下Vue的patch是即时的，并不是打包所有修改最后一起操作DOM（React则是将更新放入队列后集中处理），朋友们会问这样做性能很差吧？实际上现代浏览器对这样的DOM操作做了优化，并无差别。</p>
+<p>Vue的diff算法与动态规划算法中的经典案例“计算a到b的最小编辑距离”看上去有些相似，实际完全不同，Vue的diff相对来说轻量很多，它使用了oldStartIdx，oldEndIdx，newStartIdx，newEndIdx四个指针进行循环比较，复杂度从O(n * m) 变成了O(max(m, n))</p>
+<h3 id="component-diff"><a href="#component-diff" class="headerlink" title="component diff"></a>component diff</h3><p>因为组件与组件之间可以存在嵌套关系，所以组件本身的DOM也会遵循Virtual DOM机制。<br>如果不是同一类型的组件，则将该组件判断为 dirty component，从而替换整个组件下的所有子节点。</p>
+<p>对于同一类型的组件：<br>React： 每当应用的状态被改变时，全部子组件都会重新渲染。当然，这可以通过shouldComponentUpdate这个生命周期方法来进行控制；<br>Vue：<br>组件的依赖是在渲染过程中自动追踪的，所以系统能精确知晓哪个组件确实需要被重渲染。你可以理解为每一个组件都已经自动获得了shouldComponentUpdate，更快地计算出Virtual DOM的差异，节省大量的 diff 运算时间，决定是否需要重新渲染整个组建树，Vue将此视为默认的优化。</p>
+<p>虽然两个组件的DOM可能完全相似，但是这种情况就没有必要创建两个组件，React官方认为不同类型的 component 是很少存在相似 DOM tree 的机会，因此这种极端因素很难在实现开发过程中造成重大影响的，因此他们毅然决然的采用了上述component diff策略，即使可能存在一定的性能误差。</p>
+<h3 id="element-diff"><a href="#element-diff" class="headerlink" title="element diff"></a>element diff</h3><p>当节点处于同一层级时，diff 提供了三种节点操作，分别为：INSERT_MARKUP（插入）、MOVE_EXISTING（移动）和 REMOVE_NODE（删除）。</p>
+<p>参考文档： <a href="https://segmentfault.com/a/1190000008291645" target="_blank" rel="noopener">https://segmentfault.com/a/1190000008291645</a></p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://yoursite.com/2018/07/18/不同框架Virtual-DOM/" data-id="cjnpsydd5000mbmkjpj2nhk99" class="article-share-link">Share</a>
+      
+      
+    </footer>
+  </div>
+  
+    
+<nav id="article-nav">
+  
+    <a href="/2018/08/06/use-grid-layout-to-implement-responsive-layout/" id="article-nav-newer" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Newer</strong>
+      <div class="article-nav-title">
+        
+          use grid layout to implement responsive layout
+        
+      </div>
+    </a>
+  
+  
+    <a href="/2018/07/10/如何做inception/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Older</strong>
+      <div class="article-nav-title">如何做inception</div>
+    </a>
+  
+</nav>
+
+  
+</article>
+
+</section>
+        
+          <aside id="sidebar">
+  
+    
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Tags</h3>
+    <div class="widget">
+      <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/Mock/">Mock</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/TDD/">TDD</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/inception/">inception</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/可视化/">可视化</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/响应式/">响应式</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/敏捷/">敏捷</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/敏捷实践/">敏捷实践</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/框架/">框架</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/模式/">模式</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Tag Cloud</h3>
+    <div class="widget tagcloud">
+      <a href="/tags/Mock/" style="font-size: 10px;">Mock</a> <a href="/tags/TDD/" style="font-size: 10px;">TDD</a> <a href="/tags/inception/" style="font-size: 10px;">inception</a> <a href="/tags/可视化/" style="font-size: 10px;">可视化</a> <a href="/tags/响应式/" style="font-size: 10px;">响应式</a> <a href="/tags/敏捷/" style="font-size: 10px;">敏捷</a> <a href="/tags/敏捷实践/" style="font-size: 10px;">敏捷实践</a> <a href="/tags/框架/" style="font-size: 10px;">框架</a> <a href="/tags/模式/" style="font-size: 10px;">模式</a>
+    </div>
+  </div>
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Archives</h3>
+    <div class="widget">
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/10/">October 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/09/">September 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/08/">August 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/07/">July 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/05/">May 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/04/">April 2018</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Recent Posts</h3>
+    <div class="widget">
+      <ul>
+        
+          <li>
+            <a href="/2018/10/26/领导力培训/">领导力培训</a>
+          </li>
+        
+          <li>
+            <a href="/2018/09/13/security-knowledge/">security knowledge</a>
+          </li>
+        
+          <li>
+            <a href="/2018/08/08/商业模式/">商业模式 </a>
+          </li>
+        
+          <li>
+            <a href="/2018/08/07/shell-script/">shell script</a>
+          </li>
+        
+          <li>
+            <a href="/2018/08/07/css-new-properties-introduction/">css new properties introduction</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+
+  
+</aside>
+        
+      </div>
+      <footer id="footer">
+  
+  <div class="outer">
+    <div id="footer-info" class="inner">
+      &copy; 2018 Haiyan<br>
+      Powered by <a href="http://hexo.io/" target="_blank">Hexo</a>
+    </div>
+  </div>
+</footer>
+    </div>
+    <nav id="mobile-nav">
+  
+    <a href="/" class="mobile-nav-link">Home</a>
+  
+    <a href="/archives" class="mobile-nav-link">Archives</a>
+  
+</nav>
+    
+
+<script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
+
+
+  <link rel="stylesheet" href="/fancybox/jquery.fancybox.css">
+  <script src="/fancybox/jquery.fancybox.pack.js"></script>
+
+
+<script src="/js/script.js"></script>
+
+
+
+  </div>
+</body>
+</html>

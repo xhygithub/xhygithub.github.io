@@ -1,0 +1,352 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+
+  
+  <title>security knowledge | 倾听知识的声音</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="description" content="常见的安全问题DVWA(Damn Vulnerable Web App) 是一个php/mysql的web application，非常脆弱，非容易被攻击。它的主要目的是帮助安全专家搭建一个合法的环境，测试他们的技能，了解web app security。 http://www.dvwa.co.uk/ https://hub.docker.com/r/vulnerables/web-dvwa/ S">
+<meta property="og:type" content="article">
+<meta property="og:title" content="security knowledge">
+<meta property="og:url" content="http://yoursite.com/2018/09/13/security-knowledge/index.html">
+<meta property="og:site_name" content="倾听知识的声音">
+<meta property="og:description" content="常见的安全问题DVWA(Damn Vulnerable Web App) 是一个php/mysql的web application，非常脆弱，非容易被攻击。它的主要目的是帮助安全专家搭建一个合法的环境，测试他们的技能，了解web app security。 http://www.dvwa.co.uk/ https://hub.docker.com/r/vulnerables/web-dvwa/ S">
+<meta property="og:locale" content="Chinese and English">
+<meta property="og:image" content="http://yoursite.com/var/folders/7l/8wdbfr7n0z7bwk3vs7rhgzpr0000gn/T/abnerworks.Typora/image-20180824103557146.png">
+<meta property="og:image" content="http://yoursite.com/var/folders/7l/8wdbfr7n0z7bwk3vs7rhgzpr0000gn/T/abnerworks.Typora/image-20180824103818237.png">
+<meta property="og:image" content="http://yoursite.com/var/folders/7l/8wdbfr7n0z7bwk3vs7rhgzpr0000gn/T/abnerworks.Typora/image-20180824154222855.png">
+<meta property="og:image" content="http://yoursite.com/var/folders/7l/8wdbfr7n0z7bwk3vs7rhgzpr0000gn/T/abnerworks.Typora/image-20180824165802723.png">
+<meta property="og:updated_time" content="2018-10-26T08:56:45.713Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="security knowledge">
+<meta name="twitter:description" content="常见的安全问题DVWA(Damn Vulnerable Web App) 是一个php/mysql的web application，非常脆弱，非容易被攻击。它的主要目的是帮助安全专家搭建一个合法的环境，测试他们的技能，了解web app security。 http://www.dvwa.co.uk/ https://hub.docker.com/r/vulnerables/web-dvwa/ S">
+<meta name="twitter:image" content="http://yoursite.com/var/folders/7l/8wdbfr7n0z7bwk3vs7rhgzpr0000gn/T/abnerworks.Typora/image-20180824103557146.png">
+  
+    <link rel="alternate" href="/atom.xml" title="倾听知识的声音" type="application/atom+xml">
+  
+  
+    <link rel="icon" href="/favicon.png">
+  
+  
+    <link href="//fonts.googleapis.com/css?family=Source+Code+Pro" rel="stylesheet" type="text/css">
+  
+  <link rel="stylesheet" href="/css/style.css">
+</head>
+
+<body>
+  <div id="container">
+    <div id="wrap">
+      <header id="header">
+  <div id="banner"></div>
+  <div id="header-outer" class="outer">
+    <div id="header-title" class="inner">
+      <h1 id="logo-wrap">
+        <a href="/" id="logo">倾听知识的声音</a>
+      </h1>
+      
+    </div>
+    <div id="header-inner" class="inner">
+      <nav id="main-nav">
+        <a id="main-nav-toggle" class="nav-icon"></a>
+        
+          <a class="main-nav-link" href="/">Home</a>
+        
+          <a class="main-nav-link" href="/archives">Archives</a>
+        
+      </nav>
+      <nav id="sub-nav">
+        
+          <a id="nav-rss-link" class="nav-icon" href="/atom.xml" title="RSS Feed"></a>
+        
+        <a id="nav-search-btn" class="nav-icon" title="Search"></a>
+      </nav>
+      <div id="search-form-wrap">
+        <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" class="search-form-input" placeholder="Search"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="http://yoursite.com"></form>
+      </div>
+    </div>
+  </div>
+</header>
+      <div class="outer">
+        <section id="main"><article id="post-security-knowledge" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2018/09/13/security-knowledge/" class="article-date">
+  <time datetime="2018-09-13T07:07:06.000Z" itemprop="datePublished">2018-09-13</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      security knowledge
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h1 id="常见的安全问题"><a href="#常见的安全问题" class="headerlink" title="常见的安全问题"></a>常见的安全问题</h1><p>DVWA(Damn Vulnerable Web App) 是一个php/mysql的web application，非常脆弱，非容易被攻击。它的主要目的是帮助安全专家搭建一个合法的环境，测试他们的技能，了解web app security。</p>
+<p><a href="http://www.dvwa.co.uk/" target="_blank" rel="noopener">http://www.dvwa.co.uk/</a></p>
+<p><a href="https://hub.docker.com/r/vulnerables/web-dvwa/" target="_blank" rel="noopener">https://hub.docker.com/r/vulnerables/web-dvwa/</a></p>
+<h3 id="SQL-Injection"><a href="#SQL-Injection" class="headerlink" title="SQL Injection"></a>SQL Injection</h3><p>用户的输入被程序当成指令的一部分并执行</p>
+<h4 id="案例一：查看用户信息"><a href="#案例一：查看用户信息" class="headerlink" title="案例一：查看用户信息"></a>案例一：查看用户信息</h4><p><img src="/var/folders/7l/8wdbfr7n0z7bwk3vs7rhgzpr0000gn/T/abnerworks.Typora/image-20180824103557146.png" alt="image-20180824103557146"></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">select first_name, last_name from users where user_id = &apos;1&apos;</span><br></pre></td></tr></table></figure>
+<p><img src="/var/folders/7l/8wdbfr7n0z7bwk3vs7rhgzpr0000gn/T/abnerworks.Typora/image-20180824103818237.png" alt="image-20180824103818237"></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">//在输入框中输入&apos; or 1=&apos;1</span><br><span class="line">select first_name, last_name from users where id = &apos;&apos; or 1=&apos;1&apos;</span><br></pre></td></tr></table></figure>
+<h4 id="案例二：-登陆功能"><a href="#案例二：-登陆功能" class="headerlink" title="案例二： 登陆功能"></a>案例二： 登陆功能</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">输入用户名 Alice</span><br><span class="line">输入密码 123456</span><br><span class="line">数据库实际执行:</span><br><span class="line">Select * from admin Where username = &apos;Alice&apos; AND password = &apos;123456&apos;</span><br></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">输入用户名 &apos; or &apos;a&apos; = &apos;a</span><br><span class="line">输入密码 &apos; or &apos;a&apos; = &apos;a</span><br><span class="line">数据库实际执行：</span><br><span class="line">SELECT * from admin WHERE username = &apos;&apos; or &apos;a&apos; =&apos;a&apos; AND password = &apos;&apos; or &apos;a&apos; = &apos;a&apos;</span><br></pre></td></tr></table></figure>
+<h3 id="SQL-注入的分类"><a href="#SQL-注入的分类" class="headerlink" title="SQL 注入的分类"></a>SQL 注入的分类</h3><ul>
+<li><p>参数类型</p>
+<ul>
+<li><p>数字型</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">http://victim.com/user?id=1                  200 OK</span><br><span class="line">http://victim.com/user?id=1&apos;                 400 BAD REQUEST</span><br><span class="line">http://victim.com/user?id=1 and 1=1          200 OK</span><br><span class="line">http://victim.com/user?id=1 and 1=2          404 NOT FOUND</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>字符型</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">http://victim.com/user?name=a                 200 OK</span><br><span class="line">http://victim.com/user?name=a&apos;                 400 BAD REQUEST</span><br><span class="line">http://victim.com/user?name=a&apos;and &apos;a&apos;=&apos;a          200 OK</span><br><span class="line">http://victim.com/user?name=a&apos;and &apos;a&apos;=&apos;b          404 NOT FOUND</span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+</li>
+<li><p>服务器返回结果</p>
+<ul>
+<li><p>有回显的注入</p>
+</li>
+<li><p>有错误提示的注入</p>
+</li>
+<li><p>盲注（攻击者通常是无法从显示页面上获取执行结果，甚至连注入语句是否执行都无从得知）</p>
+<ul>
+<li>基于布尔的盲注</li>
+</ul>
+<p>布尔值True或是False，也就是说它只会根据你的注入信息返回True或是False，也就没有了之前的报错信息。</p>
+<p><img src="/var/folders/7l/8wdbfr7n0z7bwk3vs7rhgzpr0000gn/T/abnerworks.Typora/image-20180824154222855.png" alt="image-20180824154222855"></p>
+<ul>
+<li>基于时间的盲注</li>
+</ul>
+<p>界面返回值只有一种true，无论输入任何值，返回情况都会按正常的来处理。加入特定的时间函数，通过查看web页面返回的时间差来判断注入的语句是否正确。</p>
+</li>
+</ul>
+</li>
+</ul>
+<h4 id="SQL-注入的危害"><a href="#SQL-注入的危害" class="headerlink" title="SQL 注入的危害"></a>SQL 注入的危害</h4><p>导致攻击者执行任意的SQL命令</p>
+<ul>
+<li>更改查询语句的返回结果，从而绕过某些限制</li>
+<li>数据库存储的敏感信息泄露</li>
+<li>执行任意系统命令，比如通过调用mysql的system函数</li>
+<li>读取任意文件，比如通过调用mysql中的load_file函数</li>
+<li>写文件操作，比如调用mysql中的select….into outfile…..</li>
+</ul>
+<h3 id="SQL注入防御措施"><a href="#SQL注入防御措施" class="headerlink" title="SQL注入防御措施"></a>SQL注入防御措施</h3><ul>
+<li><p>对输入进行过滤，不接受某些特殊字符例如’, or, and ==&gt; 难以满足允许特殊字符的业务场景</p>
+</li>
+<li><p>输入验证，验证输入的合法性，例如有些场景只允许输入数字，如果不满足则拒绝 ==&gt;场景过多时复杂度变高，而且某些场景依然无法穷举</p>
+</li>
+<li><p>参数化查询</p>
+<ul>
+<li>数据库提供参数化查询的功能用于将代码和数据分离</li>
+<li>当需要执行数据库查询语句时，用参数化查询来防范SQL注入</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">String query = &quot;SELECT id, frstname, lastname FROM authors WHERE forename = ? and surname = ?&quot;;</span><br><span class="line">PreparedStatement pstmt = connection.prepareStatement( query );</span><br><span class="line">pstmt.setString( 1, frstname );</span><br><span class="line">pstmt.setString( 2, lastname );</span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+<h3 id="命令注入"><a href="#命令注入" class="headerlink" title="命令注入"></a>命令注入</h3><p>input: 192.168.6.116; cat /etc/passwd</p>
+<p><img src="/var/folders/7l/8wdbfr7n0z7bwk3vs7rhgzpr0000gn/T/abnerworks.Typora/image-20180824165802723.png" alt="image-20180824165802723"></p>
+<h3 id="其他的注入攻击"><a href="#其他的注入攻击" class="headerlink" title="其他的注入攻击"></a>其他的注入攻击</h3><p>常见安全问题清单<br>更新于：2018-07-18</p>
+<p>1. 调试用的接口是否已经从发布中去除？    2<br>1.1 框架自带的调试接口    2<br>1.2 开发人员预留的调试接口    3</p>
+<ol start="2">
+<li><p>文件上传功能安全    3<br> .1 文件上传功能是否做了文件真实类型校验？    3<br> .2 文件上传功能是否对上传后的文件重命名？    4<br> . 敏感函数的输入是否经过处理？    5<br> . 是否已经在响应中添加了security header?    5<br> .1 X-Content-Type-Options    5<br> .2 X-XSS-Protection    6<br> .3 Strict-Transport-Security    6<br> .4 X-Frame-Options    6<br> . HTTP非200响应的页面是否已经做了统一配置？    6<br> . 响应头里是否过滤了敏感信息？    7<br> . 用户名是否可被枚举？    7<br> . 登录功能可被暴力破解？    8<br> . API权限校验是否充足？    8</p>
+</li>
+<li><p>调试用的接口是否已经从发布中去除？<br>1.1 框架自带的调试接口<br>案例<br>Spring Boot框架提供一系列接口方便开发人员对应用进行监控和调试，比如：/loggers、/metrics、/heapdump、/autoconfig等，并且默认是公开的访问权限。如果开发人员在上线之前没有移除掉这一类接口，会被攻击者利用，从中得到应用的敏感信息。</p>
+</li>
+</ol>
+<p>如何检查<br>如果使用了Spring框架，请访问以下提供的敏感接口，确保没有敏感信息返回<br>actuator<br>auditevents<br>autoconfig<br>beans<br>configprops<br>dump<br>env<br>flyway<br>health<br>info<br>loggers<br>liquibase<br>metrics<br>mappings<br>shutdown<br>trace<br>docs<br>heapdump<br>jolokia<br>logfile<br>swagger-ui.html<br>如果使用了tomcat，请访问以下提供的敏感接口，确保没有敏感信息返回<br>examples<br>manager<br>host-manager<br>docs</p>
+<p>如何修复<br>在应用发布前将调试接口移除。<br>1.2 开发人员预留的调试接口<br>案例<br>项目组人员为了测试方便而创建的一些临时用的调试接口，用以生成token、清楚缓存等作用。如果开发人员在上线之前没有移除掉这一类的接口，会被攻击者利用以执行一些非法操作。</p>
+<p>如何检查<br>请在项目上线之前和开发团队内部确认调试用的接口已经被移除。</p>
+<p>如何修复<br>在应用发布前将调试接口移除。</p>
+<ol start="2">
+<li>文件上传功能安全<br>2.1 文件上传功能是否做了文件真实类型校验？<br>案例1：应用中有上传文档扫描件的功能，但是没有对文件的上传类型做校验。攻击者发现可以上传恶意文件到应用服务器上。</li>
+</ol>
+<p>案例2：应用中有上传文档扫描件的功能，并且检查了上传文件的后缀名必须是“.pdf”。攻击发现可以上传将后缀名更改为“.pdf”的恶意文件到应用服务器上。</p>
+<p>案例3：应用中有上传文档扫描件的功能，并且检查了上传文件的Content-Type必须是“application/pdf”。攻击发现可以上传将Content-Type更改为“application/pdf”的恶意文件到应用服务器上。</p>
+<p>如何检查<br>对任何有文件上传功能的接口进行检查，比如上传文档扫描件、上传个人头像等接口。尝试用目标接口上传：<br>类型合法的文件，将后缀名更改为非法类型，如果可以上传成功则需要对上传接口进行修复处理。<br>类型非法的文件，将后缀名更改为合法的后缀名，如果可以上传成功则需要对上传接口进行修复处理。</p>
+<p>如何修复<br>在文件上传接口的处理逻辑中：<br>对文件名进行白名单校验，如果文件名含有白名单之外的字符，则返回错误。<br>对文件后缀名进行白名单校验，如果文件后缀名不在白名单内，则返回错误。<br>使用Apache Tika对文件真实类型做校验，如果真实类型不在白名单内，则返回错误。<br>2.2 文件上传功能是否对上传后的文件重命名？<br>案例1：应用中有上传文件的功能，但是未对上传后的文件进行重命名。攻击者上传精心构造的文件名的文件，利用容器已知的解析漏洞执行攻击。</p>
+<p>案例2：应用中有上传文件的功能，并且使用拼接文件名的方式创建文件夹。攻击者上传文件的文件名为“test/test.jpg”，创建了test目录；或者攻击者上传文件的文件名为“../../test.jpg”，将文件上传到非法区域。</p>
+<p>如何检查<br>对任何有文件上传功能的接口进行检查，比如上传文档扫描件、上传个人头像等接口。尝试用目标接口上传文件，并查看响应中的文件上传后是否经过重命名。</p>
+<p>如何修复<br>后端API在保存文件前先对文件进行重命名，比如生成随机的uuid加上合法的后缀作为文件名。</p>
+<ol start="3">
+<li>敏感函数的输入是否经过处理？<br>案例<br>应用有生成报告的功能，接收请求中传入的name等参数，生成以“name.pdf”为名字的pdf文档供下载。后端API的实现调用了Runtime.getRuntime().exec()函数，并传入了name参数，以执行操作系统命令的方式来生成报告。攻击者可以构造name参数为“report; mkdir test”的请求，使得后端API调用exec函数执行命令的时候执行多余的恶意的命令（案例中该恶意命令为mkdir test）。</li>
+</ol>
+<p>如何检查<br>审查应用中是否用到了Runtime.getRuntime().exec()函数，以及传入的参数是否未经过滤直接由用户输入得到，如果是这样，那么在参数中加入命令分隔符尝试注入恶意命令，并从日志或者响应中观察恶意命令是否执行成功。</p>
+<p>如何修复<br>在使用到Runtime.getRuntime().exec()函数的地方，对由用户传入的输入进行白名单过滤，只允许传入合法的参数。</p>
+<ol start="4">
+<li>是否已经在响应中添加了security header?<br>说明<br>浏览器有一些自带的功能特性，可以帮助防御部分常见的安全问题。为了达到这一效果，我们需要在返回的http头部添加部分与安全相关的header并对其作出正确的配置。这些security header如下：<br>4.1 X-Content-Type-Options<br>作用：X-Content-Type-Options响应头告诉浏览器，是否启用MIME嗅探来猜测资源的类型以及解析和执行其中的内容。<br>推荐配置：X-Content-Type-Options: nosniff<br>4.2 X-XSS-Protection<br>作用：X-XSS-Protection响应头告诉浏览器，当检测到疑似XSS攻击的恶意代码时，阻止页面继续渲染。<br>推荐配置：X-XSS-Protection: 1; mode=block<br>4.3 Strict-Transport-Security<br>作用: HTTP Strict Transport Security (通常简称为HSTS) 响应头是用来指示浏览器只能通过HTTPS访问当前资源，禁止HTTP方式。<br>推荐配置：Strict-Transport-Security: max-age=31536000 ; includeSubDomains<br>4.4 X-Frame-Options<br>作用：X-Frame-Options HTTP 响应头是用来给浏览器指示允许一个页面可否在 <frame>, <iframe> 或者 <object> 中展现的标记。网站可以使用此功能，来确保自己网站的内容没有被嵌到别人的网站中去，也从而避免了点击劫持 (clickjacking) 的攻击。<br>推荐配置：根据业务上下文选择最佳配置（DENY、SAMEORIGIN、ALLOW-FROM）。如果不需要被嵌入到其他网页中，则推荐配置为X-Frame-Options: DENY。</object></iframe></li>
+</ol>
+<p>如何检查<br>检查HTTP响应中是否包含提及的security headers。</p>
+<p>如何修复<br>可以在容器，或者代码框架中添加配置相关的security headers。</p>
+<ol start="5">
+<li>HTTP非200响应的页面是否已经做了统一配置？<br>案例1：应用的HTTP 500错误响应暴露了错误堆栈，攻击者可以从中搜集到一些技术信息，利于发动进一步攻击。</li>
+</ol>
+<p>案例2：应用的HTTP 404错误响应暴露了nginx的版本号，攻击者可以利用该版本nginx存在的漏洞发动进一步攻击。</p>
+<p>如何检查<br>制造404响应和500响应的错误，查看返回的结果里是否包含敏感信息。</p>
+<p>如何修复<br>对错误页面做统一的配置，以非敏感的内容提示用户。</p>
+<ol start="6">
+<li>响应头里是否过滤了敏感信息？<br>案例<br>响应头中包含X-Application-Context：api-gateway:prod:8080、Server: nginx/1.11.3等内容，攻击者可以从中搜集到一些技术信息，利于发动进一步攻击。</li>
+</ol>
+<p>如何检查<br>查看应用的响应头是否包含技术相关的敏感信息，比如版本号，端口号，内网IP地址等。</p>
+<p>如何修复<br>在容器或者API中进行配置，屏蔽掉响应头中的敏感信息。比如nginx的配置文件中加上“server_tokens off;”可去掉响应头中nginx的版本信息。</p>
+<ol start="7">
+<li>用户名是否可被枚举？<br>案例<br>在登录界面输入正确的用户名和错误的密码，返回结果为：“用户名不正确”。输入错误的用户名和错误的密码，返回结果为：“用户名或密码不正确”。由于两种情况下返回的错误信息不同，导致攻击者可以枚举出系统中存在的用户名。</li>
+</ol>
+<p>如何检查<br>在登录界面尝试以下情况：<br>正确的用户名和密码<br>错误的用户名和错误的密码<br>对比http响应中的结果。如果结果不一致，则存在用户名可被枚举的问题。</p>
+<p>如何修复<br>不管是用户名错误还是密码错误，登录失败的错误信息需要保持一致。</p>
+<ol start="8">
+<li>登录功能可被暴力破解？<br>案例<br>由于登录失败次数没有任何限制，攻击者可以用正确的账号和不同密码的组合尝试枚举出正确的登录凭证。</li>
+</ol>
+<p>如何检查<br>直接调用登录API尝试正确的用户名和错误的密码，尝试多次，观察是否有错误次数的限制。特别注意需要直接调用后端API，不要仅仅只在前端尝试，因为有可能前端做了次数限制，但是后端却没有做任何检查。</p>
+<p>如何修复<br>对登录失败次数做限制。登录失败超过N次后锁定该账户M分钟，或者需要输入正确的验证码才能继续尝试登录。N建议为5，M建议为20。</p>
+<ol start="9">
+<li>API权限校验是否充足？<br>案例1：某些本该做权限校验的API并未做任何权限控制，攻击者可以直接调用该API进行越权操作。</li>
+</ol>
+<p>案例2：POST /order/{id}/comment接口提供为自己的订单添加备注的功能。该API校验了请求者需要有customer的role，但是并没有校验该customer与order的所属权。导致恶意的customer可以调用该接口给不属于自己的订单添加备注。</p>
+<p>如何检查<br>梳理清楚API的权限设定，从以下两个方面测试是否有不足的权限校验发生：<br>平行越权：权限类型不变，权限ID改变；如：同是普通用户，其中一个用户可查看其它用户信息。<br>垂直越权：权限ID不变，权限类型改变；如普通用户可使用管理员权限进行操作。<br>交叉越权：权限类型改变，权限ID也改变。</p>
+<p>如何修复<br>梳理清楚API的权限设定，为API做充分的权限校验。</p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://yoursite.com/2018/09/13/security-knowledge/" data-id="cjnpsydd9000ubmkjs1hc5iag" class="article-share-link">Share</a>
+      
+      
+    </footer>
+  </div>
+  
+    
+<nav id="article-nav">
+  
+    <a href="/2018/10/26/领导力培训/" id="article-nav-newer" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Newer</strong>
+      <div class="article-nav-title">
+        
+          领导力培训
+        
+      </div>
+    </a>
+  
+  
+    <a href="/2018/08/08/商业模式/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Older</strong>
+      <div class="article-nav-title">商业模式 </div>
+    </a>
+  
+</nav>
+
+  
+</article>
+
+</section>
+        
+          <aside id="sidebar">
+  
+    
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Tags</h3>
+    <div class="widget">
+      <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/Mock/">Mock</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/TDD/">TDD</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/inception/">inception</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/可视化/">可视化</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/响应式/">响应式</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/敏捷/">敏捷</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/敏捷实践/">敏捷实践</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/框架/">框架</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/模式/">模式</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Tag Cloud</h3>
+    <div class="widget tagcloud">
+      <a href="/tags/Mock/" style="font-size: 10px;">Mock</a> <a href="/tags/TDD/" style="font-size: 10px;">TDD</a> <a href="/tags/inception/" style="font-size: 10px;">inception</a> <a href="/tags/可视化/" style="font-size: 10px;">可视化</a> <a href="/tags/响应式/" style="font-size: 10px;">响应式</a> <a href="/tags/敏捷/" style="font-size: 10px;">敏捷</a> <a href="/tags/敏捷实践/" style="font-size: 10px;">敏捷实践</a> <a href="/tags/框架/" style="font-size: 10px;">框架</a> <a href="/tags/模式/" style="font-size: 10px;">模式</a>
+    </div>
+  </div>
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Archives</h3>
+    <div class="widget">
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/10/">October 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/09/">September 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/08/">August 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/07/">July 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/05/">May 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/04/">April 2018</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Recent Posts</h3>
+    <div class="widget">
+      <ul>
+        
+          <li>
+            <a href="/2018/10/26/领导力培训/">领导力培训</a>
+          </li>
+        
+          <li>
+            <a href="/2018/09/13/security-knowledge/">security knowledge</a>
+          </li>
+        
+          <li>
+            <a href="/2018/08/08/商业模式/">商业模式 </a>
+          </li>
+        
+          <li>
+            <a href="/2018/08/07/shell-script/">shell script</a>
+          </li>
+        
+          <li>
+            <a href="/2018/08/07/css-new-properties-introduction/">css new properties introduction</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+
+  
+</aside>
+        
+      </div>
+      <footer id="footer">
+  
+  <div class="outer">
+    <div id="footer-info" class="inner">
+      &copy; 2018 Haiyan<br>
+      Powered by <a href="http://hexo.io/" target="_blank">Hexo</a>
+    </div>
+  </div>
+</footer>
+    </div>
+    <nav id="mobile-nav">
+  
+    <a href="/" class="mobile-nav-link">Home</a>
+  
+    <a href="/archives" class="mobile-nav-link">Archives</a>
+  
+</nav>
+    
+
+<script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
+
+
+  <link rel="stylesheet" href="/fancybox/jquery.fancybox.css">
+  <script src="/fancybox/jquery.fancybox.pack.js"></script>
+
+
+<script src="/js/script.js"></script>
+
+
+
+  </div>
+</body>
+</html>

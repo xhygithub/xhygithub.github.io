@@ -1,0 +1,237 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+
+  
+  <title>shell script | 倾听知识的声音</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="description" content="判断参数长度以及参数中是否存在某字符串12345#!/bin/shif [ $&amp;#123;#@&amp;#125; -ne 0 ] &amp;amp;&amp;amp; [ &amp;quot;$&amp;#123;@#&amp;quot;--help&amp;quot;&amp;#125;&amp;quot; = &amp;quot;&amp;quot; ]; then  printf -- &amp;apos;...help...\n&amp;apos;;  exit 0;fi; [${#@}">
+<meta property="og:type" content="article">
+<meta property="og:title" content="shell script">
+<meta property="og:url" content="http://yoursite.com/2018/08/07/shell-script/index.html">
+<meta property="og:site_name" content="倾听知识的声音">
+<meta property="og:description" content="判断参数长度以及参数中是否存在某字符串12345#!/bin/shif [ $&amp;#123;#@&amp;#125; -ne 0 ] &amp;amp;&amp;amp; [ &amp;quot;$&amp;#123;@#&amp;quot;--help&amp;quot;&amp;#125;&amp;quot; = &amp;quot;&amp;quot; ]; then  printf -- &amp;apos;...help...\n&amp;apos;;  exit 0;fi; [${#@}">
+<meta property="og:locale" content="Chinese and English">
+<meta property="og:updated_time" content="2018-10-26T08:56:45.714Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="shell script">
+<meta name="twitter:description" content="判断参数长度以及参数中是否存在某字符串12345#!/bin/shif [ $&amp;#123;#@&amp;#125; -ne 0 ] &amp;amp;&amp;amp; [ &amp;quot;$&amp;#123;@#&amp;quot;--help&amp;quot;&amp;#125;&amp;quot; = &amp;quot;&amp;quot; ]; then  printf -- &amp;apos;...help...\n&amp;apos;;  exit 0;fi; [${#@}">
+  
+    <link rel="alternate" href="/atom.xml" title="倾听知识的声音" type="application/atom+xml">
+  
+  
+    <link rel="icon" href="/favicon.png">
+  
+  
+    <link href="//fonts.googleapis.com/css?family=Source+Code+Pro" rel="stylesheet" type="text/css">
+  
+  <link rel="stylesheet" href="/css/style.css">
+</head>
+
+<body>
+  <div id="container">
+    <div id="wrap">
+      <header id="header">
+  <div id="banner"></div>
+  <div id="header-outer" class="outer">
+    <div id="header-title" class="inner">
+      <h1 id="logo-wrap">
+        <a href="/" id="logo">倾听知识的声音</a>
+      </h1>
+      
+    </div>
+    <div id="header-inner" class="inner">
+      <nav id="main-nav">
+        <a id="main-nav-toggle" class="nav-icon"></a>
+        
+          <a class="main-nav-link" href="/">Home</a>
+        
+          <a class="main-nav-link" href="/archives">Archives</a>
+        
+      </nav>
+      <nav id="sub-nav">
+        
+          <a id="nav-rss-link" class="nav-icon" href="/atom.xml" title="RSS Feed"></a>
+        
+        <a id="nav-search-btn" class="nav-icon" title="Search"></a>
+      </nav>
+      <div id="search-form-wrap">
+        <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" class="search-form-input" placeholder="Search"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="http://yoursite.com"></form>
+      </div>
+    </div>
+  </div>
+</header>
+      <div class="outer">
+        <section id="main"><article id="post-shell-script" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2018/08/07/shell-script/" class="article-date">
+  <time datetime="2018-08-07T08:19:56.000Z" itemprop="datePublished">2018-08-07</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      shell script
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h3 id="判断参数长度以及参数中是否存在某字符串"><a href="#判断参数长度以及参数中是否存在某字符串" class="headerlink" title="判断参数长度以及参数中是否存在某字符串"></a>判断参数长度以及参数中是否存在某字符串</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">#!/bin/sh</span><br><span class="line">if [ $&#123;#@&#125; -ne 0 ] &amp;&amp; [ &quot;$&#123;@#&quot;--help&quot;&#125;&quot; = &quot;&quot; ]; then</span><br><span class="line">  printf -- &apos;...help...\n&apos;;</span><br><span class="line">  exit 0;</span><br><span class="line">fi;</span><br></pre></td></tr></table></figure>
+[${#@} -ne 0],计算参数长度，参数长度不为0时检查是否存在–help标记<br><br><br>### stty(set tty)<br>stty: set tty, 用于注册和修改当前注册的终端的通信参数。UNIX系统为键盘的输入和终端的输出提供了重要的控制手段，可以通过stty命令对特定终端或通信线路设置选项。<br><br>查看当前终端的设置情况:<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line">stty -a</span><br><span class="line">&lt;!-- output --&gt;</span><br><span class="line">speed 38400 baud; 26 rows; 163 columns;</span><br><span class="line">lflags: icanon isig iexten echo echoe echok echoke -echonl echoctl</span><br><span class="line">	-echoprt -altwerase -noflsh -tostop -flusho pendin -nokerninfo</span><br><span class="line">	-extproc</span><br><span class="line">iflags: -istrip icrnl -inlcr -igncr ixon -ixoff ixany imaxbel iutf8</span><br><span class="line">	-ignbrk brkint -inpck -ignpar -parmrk</span><br><span class="line">oflags: opost onlcr -oxtabs -onocr -onlret</span><br><span class="line">cflags: cread cs8 -parenb -parodd hupcl -clocal -cstopb -crtscts -dsrflow</span><br><span class="line">	-dtrflow -mdmbuf</span><br><span class="line">cchars: discard = ^O; dsusp = ^Y; eof = ^D; eol = &lt;undef&gt;;</span><br><span class="line">	eol2 = &lt;undef&gt;; erase = ^?; intr = ^C; kill = ^U; lnext = ^V;</span><br><span class="line">	min = 1; quit = ^\; reprint = ^R; start = ^Q; status = ^T;</span><br><span class="line">	stop = ^S; susp = ^Z; time = 0; werase = ^W;</span><br></pre></td></tr></table></figure>
+<p>上面实现的终端选项都可以重新配置。每种配置都有自己的名字（eg：echo），要么被设置，要么被清除（选项前面有负号-，代表被清除、禁止；没有代表被设置）<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"># 禁止终端输出</span><br><span class="line">stty -echo;</span><br><span class="line"># 启用终端输出</span><br><span class="line">stty echo;</span><br></pre></td></tr></table></figure></p>
+<h3 id="set-e"><a href="#set-e" class="headerlink" title="set -e"></a>set -e</h3><p>set -e 表示从当前位置开始，如果出现任何错误（命令失败，返回非零的退出状态，除非是迭代 &amp;&amp;, || 命令的一部分）都将触发EXIT，相反set +e表示从当前位置开始不管出现任何错误都继续执行脚本。</p>
+<h3 id="使用escape-sequence-code颜色编码输出"><a href="#使用escape-sequence-code颜色编码输出" class="headerlink" title="使用escape sequence code颜色编码输出"></a>使用escape sequence code颜色编码输出</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">printf -- &apos;\033[32m SUCCESS: yay \033[0m\n&apos;;</span><br></pre></td></tr></table></figure>
+<p>\033[32m就是escape sequence code， 读到\033说明后面的字符是escape sequence，会特殊处理。[32m, 32是设置终端输出颜色。</p>
+<h3 id="捕捉信号trap"><a href="#捕捉信号trap" class="headerlink" title="捕捉信号trap"></a>捕捉信号trap</h3><p>如果脚本在执行过程中终止，如何处理后续的事情？例如输出错误信息。可以通过信号机制终止脚本（不是所有发送的信号都是终止信号）<br>查看信号列表<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">➜  ~ kill -l</span><br><span class="line">HUP INT QUIT ILL TRAP ABRT EMT FPE KILL BUS SEGV SYS PIPE ALRM TERM URG STOP TSTP CONT CHLD TTIN TTOU IO XCPU XFSZ VTALRM PROF WINCH INFO USR1 USR2</span><br></pre></td></tr></table></figure></p>
+<p>脚本接收信号后，可以：</p>
+<ul>
+<li>忽略信号，不执行任何操作</li>
+<li>使用trap 捕捉信号，并却采取相应的操作(trap ‘command_list’ signals)</li>
+<li>使用默认操作<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">trap &apos;echo you hit Ctrl-C/Ctrl-\, now exiting..; exit&apos; SIGINT SIGQUIT</span><br></pre></td></tr></table></figure></li>
+</ul>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://yoursite.com/2018/08/07/shell-script/" data-id="cjnpsydd3000ibmkj6gqfvwu6" class="article-share-link">Share</a>
+      
+      
+    </footer>
+  </div>
+  
+    
+<nav id="article-nav">
+  
+    <a href="/2018/08/08/商业模式/" id="article-nav-newer" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Newer</strong>
+      <div class="article-nav-title">
+        
+          商业模式 
+        
+      </div>
+    </a>
+  
+  
+    <a href="/2018/08/07/css-new-properties-introduction/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Older</strong>
+      <div class="article-nav-title">css new properties introduction</div>
+    </a>
+  
+</nav>
+
+  
+</article>
+
+</section>
+        
+          <aside id="sidebar">
+  
+    
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Tags</h3>
+    <div class="widget">
+      <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/Mock/">Mock</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/TDD/">TDD</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/inception/">inception</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/可视化/">可视化</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/响应式/">响应式</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/敏捷/">敏捷</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/敏捷实践/">敏捷实践</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/框架/">框架</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/模式/">模式</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Tag Cloud</h3>
+    <div class="widget tagcloud">
+      <a href="/tags/Mock/" style="font-size: 10px;">Mock</a> <a href="/tags/TDD/" style="font-size: 10px;">TDD</a> <a href="/tags/inception/" style="font-size: 10px;">inception</a> <a href="/tags/可视化/" style="font-size: 10px;">可视化</a> <a href="/tags/响应式/" style="font-size: 10px;">响应式</a> <a href="/tags/敏捷/" style="font-size: 10px;">敏捷</a> <a href="/tags/敏捷实践/" style="font-size: 10px;">敏捷实践</a> <a href="/tags/框架/" style="font-size: 10px;">框架</a> <a href="/tags/模式/" style="font-size: 10px;">模式</a>
+    </div>
+  </div>
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Archives</h3>
+    <div class="widget">
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/10/">October 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/09/">September 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/08/">August 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/07/">July 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/05/">May 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/04/">April 2018</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Recent Posts</h3>
+    <div class="widget">
+      <ul>
+        
+          <li>
+            <a href="/2018/10/26/领导力培训/">领导力培训</a>
+          </li>
+        
+          <li>
+            <a href="/2018/09/13/security-knowledge/">security knowledge</a>
+          </li>
+        
+          <li>
+            <a href="/2018/08/08/商业模式/">商业模式 </a>
+          </li>
+        
+          <li>
+            <a href="/2018/08/07/shell-script/">shell script</a>
+          </li>
+        
+          <li>
+            <a href="/2018/08/07/css-new-properties-introduction/">css new properties introduction</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+
+  
+</aside>
+        
+      </div>
+      <footer id="footer">
+  
+  <div class="outer">
+    <div id="footer-info" class="inner">
+      &copy; 2018 Haiyan<br>
+      Powered by <a href="http://hexo.io/" target="_blank">Hexo</a>
+    </div>
+  </div>
+</footer>
+    </div>
+    <nav id="mobile-nav">
+  
+    <a href="/" class="mobile-nav-link">Home</a>
+  
+    <a href="/archives" class="mobile-nav-link">Archives</a>
+  
+</nav>
+    
+
+<script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
+
+
+  <link rel="stylesheet" href="/fancybox/jquery.fancybox.css">
+  <script src="/fancybox/jquery.fancybox.pack.js"></script>
+
+
+<script src="/js/script.js"></script>
+
+
+
+  </div>
+</body>
+</html>

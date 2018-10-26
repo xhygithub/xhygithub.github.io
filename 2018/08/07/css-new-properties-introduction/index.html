@@ -1,0 +1,252 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+
+  
+  <title>css new properties introduction | 倾听知识的声音</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="description" content="CSS Display Module (Level 3) display: contents;W3C status – Working DraftBrowser supportCSS Conditional Rules Module (Level 3) @support(…) {…}W3C status - Candidate RecommendationFurther reading: MDN">
+<meta property="og:type" content="article">
+<meta property="og:title" content="css new properties introduction">
+<meta property="og:url" content="http://yoursite.com/2018/08/07/css-new-properties-introduction/index.html">
+<meta property="og:site_name" content="倾听知识的声音">
+<meta property="og:description" content="CSS Display Module (Level 3) display: contents;W3C status – Working DraftBrowser supportCSS Conditional Rules Module (Level 3) @support(…) {…}W3C status - Candidate RecommendationFurther reading: MDN">
+<meta property="og:locale" content="Chinese and English">
+<meta property="og:updated_time" content="2018-10-26T08:56:45.713Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="css new properties introduction">
+<meta name="twitter:description" content="CSS Display Module (Level 3) display: contents;W3C status – Working DraftBrowser supportCSS Conditional Rules Module (Level 3) @support(…) {…}W3C status - Candidate RecommendationFurther reading: MDN">
+  
+    <link rel="alternate" href="/atom.xml" title="倾听知识的声音" type="application/atom+xml">
+  
+  
+    <link rel="icon" href="/favicon.png">
+  
+  
+    <link href="//fonts.googleapis.com/css?family=Source+Code+Pro" rel="stylesheet" type="text/css">
+  
+  <link rel="stylesheet" href="/css/style.css">
+</head>
+
+<body>
+  <div id="container">
+    <div id="wrap">
+      <header id="header">
+  <div id="banner"></div>
+  <div id="header-outer" class="outer">
+    <div id="header-title" class="inner">
+      <h1 id="logo-wrap">
+        <a href="/" id="logo">倾听知识的声音</a>
+      </h1>
+      
+    </div>
+    <div id="header-inner" class="inner">
+      <nav id="main-nav">
+        <a id="main-nav-toggle" class="nav-icon"></a>
+        
+          <a class="main-nav-link" href="/">Home</a>
+        
+          <a class="main-nav-link" href="/archives">Archives</a>
+        
+      </nav>
+      <nav id="sub-nav">
+        
+          <a id="nav-rss-link" class="nav-icon" href="/atom.xml" title="RSS Feed"></a>
+        
+        <a id="nav-search-btn" class="nav-icon" title="Search"></a>
+      </nav>
+      <div id="search-form-wrap">
+        <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" class="search-form-input" placeholder="Search"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="http://yoursite.com"></form>
+      </div>
+    </div>
+  </div>
+</header>
+      <div class="outer">
+        <section id="main"><article id="post-css-new-properties-introduction" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2018/08/07/css-new-properties-introduction/" class="article-date">
+  <time datetime="2018-08-07T01:55:56.000Z" itemprop="datePublished">2018-08-07</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      css new properties introduction
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>CSS Display Module (Level 3)</p>
+<p>display: contents;<br>W3C status – Working Draft<br>Browser support<br>CSS Conditional Rules Module (Level 3)</p>
+<p>@support(…) {…}<br>W3C status - Candidate Recommendation<br>Further reading: MDN web docs<br>CSS Overscroll Behavior Module (Level 1)</p>
+<p>overscroll-behavior: contain;<br>W3C status – Unofficial<br>Browser support<br>Further reading: Take control of your scroll<br>CSS Selectors Module (Level 4)</p>
+<p>:focus-within<br>W3C status – Working Draft<br>Browser support<br>Further reading: MDN web docs :focus-within, :placeholder-shown<br>The CSS Containment Module (Level 1) </p>
+<p>contain: paint;<br>W3C status - Candidate Recommendation<br>Browser support<br>Further reading: CSS Containment in Chrome 52</p>
+<h2 id="display-contents"><a href="#display-contents" class="headerlink" title="display: contents"></a>display: contents</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line">&lt;div class=&quot;container&quot;&gt;</span><br><span class="line">    &lt;ul class=&quot;feed&quot;&gt;</span><br><span class="line">        &lt;li&gt;&lt;div class=&quot;card&quot;&gt;Card 1&lt;/div&gt;&lt;/li&gt;</span><br><span class="line">        &lt;li&gt;&lt;div class=&quot;card&quot;&gt;Card 2&lt;/div&gt;&lt;/li&gt;</span><br><span class="line">        &lt;li&gt;&lt;div class=&quot;card&quot;&gt;Card 3&lt;/div&gt;&lt;/li&gt;</span><br><span class="line">        &lt;li&gt;&lt;div class=&quot;card&quot;&gt;Card 4&lt;/div&gt;&lt;/li&gt;</span><br><span class="line">        &lt;li&gt;&lt;div class=&quot;card&quot;&gt;Card 5&lt;/div&gt;&lt;/li&gt;</span><br><span class="line">        &lt;li class=&quot;nested&quot;&gt;</span><br><span class="line">            &lt;ul&gt;</span><br><span class="line">                &lt;li&gt;&lt;div class=&quot;card&quot;&gt;Card A&lt;/div&gt;&lt;/li&gt;</span><br><span class="line">                &lt;li&gt;&lt;div class=&quot;card&quot;&gt;Card B&lt;/div&gt;&lt;/li&gt;</span><br><span class="line">                &lt;li&gt;&lt;div class=&quot;card&quot;&gt;Card C&lt;/div&gt;&lt;/li&gt;</span><br><span class="line">            &lt;/ul&gt;</span><br><span class="line">        &lt;/li&gt;</span><br><span class="line">        &lt;li&gt;&lt;div class=&quot;card&quot;&gt;Card 6&lt;/div&gt;&lt;/li&gt;</span><br><span class="line">        &lt;li&gt;&lt;div class=&quot;card&quot;&gt;Card 7&lt;/div&gt;&lt;/li&gt;</span><br><span class="line">        &lt;li&gt;&lt;div class=&quot;card&quot;&gt;Card 8&lt;/div&gt;&lt;/li&gt;</span><br><span class="line">        &lt;li&gt;&lt;div class=&quot;card&quot;&gt;Card 9&lt;/div&gt;&lt;/li&gt;</span><br><span class="line">        &lt;li&gt;&lt;div class=&quot;card&quot;&gt;Card 10&lt;/div&gt;&lt;/li&gt;</span><br><span class="line">    &lt;/ul&gt;</span><br><span class="line">&lt;/div&gt;</span><br></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">ul.feed  &#123;</span><br><span class="line">    display: flex</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>ul.feed 设置了display:flex只会对其子元素ul.feed &gt; li .card 有影响，但不会影响其后代子元素，换句话说，.nested &gt; li是无法自动变成Flex项目。除了改变html 模版或是使用js，没有办法使得所有的li都会成为flex项目。</p>
+<p>那么display: contents这一简单的代码实际上让元素表现得好像不存在一样。但仍然可以看到元素的后代，而且元素自身并不影响布局。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">ul.feed  &#123;</span><br><span class="line">    display: flex</span><br><span class="line">&#125;</span><br><span class="line">.feed ul,</span><br><span class="line">.feed li &#123;</span><br><span class="line">    display: contents;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<p>这样所有的.card都是flex item。</p>
+<h2 id="soupport-css查询特性"><a href="#soupport-css查询特性" class="headerlink" title="@soupport css查询特性"></a>@soupport css查询特性</h2><p>// 支持 display: contents的浏览器，采用的是这段代码<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">@supports (display: contents) &#123;</span><br><span class="line">    .feed ul,</span><br><span class="line">    .feed li &#123;</span><br><span class="line">        display: contents;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    .card &#123;</span><br><span class="line">        flex: 1 0 40%;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<p>@support 可以和and、or和not结合起来使用，让表达式更加的强大<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">@supports (display: contents) and (display: flex)</span><br></pre></td></tr></table></figure></p>
+<h2 id="oversroll-behavior解决滚动链接"><a href="#oversroll-behavior解决滚动链接" class="headerlink" title="oversroll-behavior解决滚动链接"></a>oversroll-behavior解决滚动链接</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line">&lt;body&gt;</span><br><span class="line">    &lt;div class=&quot;chat&quot;&gt;</span><br><span class="line">        &lt;div class=&quot;messages&quot;&gt;</span><br><span class="line">            &lt;ul&gt;</span><br><span class="line">                &lt;li&gt;&lt;div class=&quot;message&quot;&gt;Message 1&lt;/div&gt;&lt;/li&gt;</span><br><span class="line">                &lt;li&gt;&lt;div class=&quot;message&quot;&gt;Message 2&lt;/div&gt;&lt;/li&gt;</span><br><span class="line">                &lt;li&gt;&lt;div class=&quot;message&quot;&gt;Message 3&lt;/div&gt;&lt;/li&gt;</span><br><span class="line">                &lt;li&gt;&lt;div class=&quot;message&quot;&gt;Message 4&lt;/div&gt;&lt;/li&gt;</span><br><span class="line">                &lt;li&gt;&lt;div class=&quot;message&quot;&gt;Message 5&lt;/div&gt;&lt;/li&gt;</span><br><span class="line">                &lt;li&gt;&lt;div class=&quot;message&quot;&gt;Message 6&lt;/div&gt;&lt;/li&gt;</span><br><span class="line">                &lt;li&gt;&lt;div class=&quot;message&quot;&gt;Message 7&lt;/div&gt;&lt;/li&gt;</span><br><span class="line">                &lt;li&gt;&lt;div class=&quot;message&quot;&gt;Message 8&lt;/div&gt;&lt;/li&gt;</span><br><span class="line">                &lt;li&gt;&lt;div class=&quot;message&quot;&gt;Message 9&lt;/div&gt;&lt;/li&gt;</span><br><span class="line">                &lt;li&gt;&lt;div class=&quot;message&quot;&gt;Message 10&lt;/div&gt;&lt;/li&gt;</span><br><span class="line">            &lt;/ul&gt;</span><br><span class="line">        &lt;/div&gt;</span><br><span class="line">        &lt;input type=&quot;text&quot; class=&quot;input&quot;&gt;</span><br><span class="line">    &lt;/div&gt;</span><br><span class="line">    &lt;div class=&quot;container&quot;&gt;</span><br><span class="line">        ......</span><br><span class="line">    &lt;/div&gt;</span><br><span class="line">&lt;/body&gt;</span><br></pre></td></tr></table></figure>
+<p>滚动聊天框中的消息列表时（.messages），滚动到消息列表末端时，可以看到页面body将开始滚动。这种效果被称为滚动链接，即Scroll Chaining。<br>解决方案：<br>1.body添加overflow:hidden<br>2.overscroll-behavior</p>
+<ul>
+<li>auto：其默认值。元素（容器）的滚动会传播给其祖先元素。有点类似JavaScript中的冒泡行为一样</li>
+<li>contain：阻止滚动链接。滚动行为不会传播给其祖先元素，但会影响节点内的局部显示。例如，Android上的光辉效果或iOS上的回弹效果。当用户触摸滚动边界时会通知用户。注意，overscroll-behavior:contain在html元素上使用，可以阻止导航滚动操作</li>
+<li>none：和contain一样，但它也可以防止节点本身的滚动效果</li>
+</ul>
+<h2 id="focus-within伪类选择器"><a href="#focus-within伪类选择器" class="headerlink" title=":focus-within伪类选择器"></a>:focus-within伪类选择器</h2><p>一样，但是:focus-within与其不同之处是，如果元素的任何后代元素得到焦点，它就会被匹配。这就是这个属性特别之处，因为它与CSS通常的工作方式相反，通常我们只能根据元素的祖先来选择元素。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">&lt;!-- 将消息框折叠起来 --&gt;</span><br><span class="line">.messages &#123;</span><br><span class="line">    ...</span><br><span class="line">    max-height: 0;</span><br><span class="line">    padding: 0;</span><br><span class="line">    transition: max-height 500ms; </span><br><span class="line">&#125;</span><br><span class="line">&lt;!-- chat任何后代元素得到焦点，展开消息框 --&gt;</span><br><span class="line">.chat:focus-within .messages &#123;</span><br><span class="line">    max-height: 300px;</span><br><span class="line">    padding: 10px;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>当.chat区域内的任何内容得到焦点时，重置一下.message的max-height和padding值。请记住，一个元素必须接受键盘或鼠标事件或其他形式的输入，以便接收焦点。比如我们这个示例，点击<input>输入框就符合这个要求，可以达到我们想要的预期效果。所以当点击input，input获得焦点，也就是chat的后代元素获得焦点，消息框就展开了。<br>注意：点击除input的其他区域，消息框都没有办法展开。</p>
+<p>当文本输入框得到焦点之后，除了能展开聊天框之外，还希望聊天框底下的Newsfeed变得模糊(.container)<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">&lt;!-- 使用css选择器中的兄弟选择器 --&gt;</span><br><span class="line">.chat:focus-within ~ .container &#123;</span><br><span class="line">    filter: blur(5px)</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<p>注意： filter效果，这将会改变元素的层叠顺序，造成聊天框（.chat)在Newsfeed(.container)下面。所以需要显式的.chat中添加z-index的值</p>
+<h2 id="placeholder-shown-伪类选择器"><a href="#placeholder-shown-伪类选择器" class="headerlink" title=":placeholder-shown 伪类选择器"></a>:placeholder-shown 伪类选择器</h2><p>::placeholder是一个伪元素（一个在DOM中并不存在的可见元素），:placeholder-shown是一个伪类选择器， 两者并不相同<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">&lt;!-- 新增占位符文本 --&gt;</span><br><span class="line">&lt;input type=&quot;text&quot; class=&quot;input&quot; placeholder=&quot;Enter your message&quot;&gt;</span><br></pre></td></tr></table></figure></p>
+<p>input获得焦点的时候，placeholder不可见<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">&lt;!-- 当占位符文本不可见的时候，我们可以做一些操作 --&gt;</span><br><span class="line">.input:not:(:placeholder-shown) &#123;</span><br><span class="line">    ...</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<h2 id="探索Containment"><a href="#探索Containment" class="headerlink" title="探索Containment"></a>探索Containment</h2><p><a href="https://www.creativebloq.com/how-to/5-hot-new-css-features-and-how-to-use-them" target="_blank" rel="noopener">https://www.creativebloq.com/how-to/5-hot-new-css-features-and-how-to-use-them</a></p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://yoursite.com/2018/08/07/css-new-properties-introduction/" data-id="cjnpsydd1000fbmkjozixqw2c" class="article-share-link">Share</a>
+      
+      
+    </footer>
+  </div>
+  
+    
+<nav id="article-nav">
+  
+    <a href="/2018/08/07/shell-script/" id="article-nav-newer" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Newer</strong>
+      <div class="article-nav-title">
+        
+          shell script
+        
+      </div>
+    </a>
+  
+  
+    <a href="/2018/08/06/use-grid-layout-to-implement-responsive-layout/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Older</strong>
+      <div class="article-nav-title">use grid layout to implement responsive layout</div>
+    </a>
+  
+</nav>
+
+  
+</article>
+
+</section>
+        
+          <aside id="sidebar">
+  
+    
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Tags</h3>
+    <div class="widget">
+      <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/Mock/">Mock</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/TDD/">TDD</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/inception/">inception</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/可视化/">可视化</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/响应式/">响应式</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/敏捷/">敏捷</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/敏捷实践/">敏捷实践</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/框架/">框架</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/模式/">模式</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Tag Cloud</h3>
+    <div class="widget tagcloud">
+      <a href="/tags/Mock/" style="font-size: 10px;">Mock</a> <a href="/tags/TDD/" style="font-size: 10px;">TDD</a> <a href="/tags/inception/" style="font-size: 10px;">inception</a> <a href="/tags/可视化/" style="font-size: 10px;">可视化</a> <a href="/tags/响应式/" style="font-size: 10px;">响应式</a> <a href="/tags/敏捷/" style="font-size: 10px;">敏捷</a> <a href="/tags/敏捷实践/" style="font-size: 10px;">敏捷实践</a> <a href="/tags/框架/" style="font-size: 10px;">框架</a> <a href="/tags/模式/" style="font-size: 10px;">模式</a>
+    </div>
+  </div>
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Archives</h3>
+    <div class="widget">
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/10/">October 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/09/">September 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/08/">August 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/07/">July 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/05/">May 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/04/">April 2018</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Recent Posts</h3>
+    <div class="widget">
+      <ul>
+        
+          <li>
+            <a href="/2018/10/26/领导力培训/">领导力培训</a>
+          </li>
+        
+          <li>
+            <a href="/2018/09/13/security-knowledge/">security knowledge</a>
+          </li>
+        
+          <li>
+            <a href="/2018/08/08/商业模式/">商业模式 </a>
+          </li>
+        
+          <li>
+            <a href="/2018/08/07/shell-script/">shell script</a>
+          </li>
+        
+          <li>
+            <a href="/2018/08/07/css-new-properties-introduction/">css new properties introduction</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+
+  
+</aside>
+        
+      </div>
+      <footer id="footer">
+  
+  <div class="outer">
+    <div id="footer-info" class="inner">
+      &copy; 2018 Haiyan<br>
+      Powered by <a href="http://hexo.io/" target="_blank">Hexo</a>
+    </div>
+  </div>
+</footer>
+    </div>
+    <nav id="mobile-nav">
+  
+    <a href="/" class="mobile-nav-link">Home</a>
+  
+    <a href="/archives" class="mobile-nav-link">Archives</a>
+  
+</nav>
+    
+
+<script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
+
+
+  <link rel="stylesheet" href="/fancybox/jquery.fancybox.css">
+  <script src="/fancybox/jquery.fancybox.pack.js"></script>
+
+
+<script src="/js/script.js"></script>
+
+
+
+  </div>
+</body>
+</html>
